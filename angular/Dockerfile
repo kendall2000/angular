@@ -5,13 +5,13 @@ FROM node:18 AS build
 WORKDIR /app
 
 # Copiar los archivos de configuración
-COPY angular/package*.json ./
+COPY package*.json ./
 
 # Instalar las dependencias
 RUN npm install
 
 # Copiar el resto de los archivos de la aplicación
-COPY angular .
+COPY . .
 
 # Construir la aplicación Angular
 RUN npm run build --prod
