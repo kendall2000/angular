@@ -1,17 +1,17 @@
-# Usar la imagen base de Node.js 18 en lugar de Node.js 16
+# Usar la imagen base de Node.js
 FROM node:18 AS build
 
 # Define el directorio de trabajo
 WORKDIR /app
 
 # Copiar los archivos de configuración
-COPY package*.json ./
+COPY angular/package*.json ./
 
 # Instalar las dependencias
 RUN npm install
 
 # Copiar el resto de los archivos de la aplicación
-COPY . .
+COPY angular .
 
 # Construir la aplicación Angular
 RUN npm run build --prod
