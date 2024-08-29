@@ -1,0 +1,31 @@
+<div>
+    <label for="videoInputSelect">Select Camera: </label>
+    <select id="videoInputSelect" (change)="onDeviceChange($event)">
+        <option *ngFor="let device of videoDevices" [value]="device.deviceId">
+            {{ device.label || 'Camera ' + device.deviceId }}
+        </option>
+    </select>
+    <br />
+    <video #video width="640" height="480" autoplay></video>
+    <canvas #canvas width="640" height="480" style="display: none;"></canvas>
+    <button (click)="captureImage()">Take Picture</button>
+</div>
+
+
+<div class="modal" *ngIf="isLoading">
+    <div class="modal-content">
+        <p>Cargando...</p>
+    <div class="spinner"></div>
+    </div>
+</div>
+
+
+<div>
+    <h3>Captured Images</h3>
+
+    <!-- <div *ngFor="let img of capturedImagesService">
+        <img [src]="img" width="160" height="120">
+    </div> -->
+</div>
+
+<div>{{SelectJson | json  }}</div>
